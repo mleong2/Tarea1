@@ -1,25 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import React, {useEffect, useState} from 'react';
+import Router from "./routes/Router";
+import {MakeupContext} from "./context/MakeupContext";
+import {Footer} from "./components/Footer";
+import {useMakeups} from "./hooks/useMakeups";
+import ilia from "./img/ilia2.jpg";
+
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+    const makeups = useMakeups();
+    console.log(makeups)
+
+    return (
+
+        <MakeupContext.Provider value={{makeups}}>
+            <Router></Router>
+
+        </MakeupContext.Provider>
+    );
 }
 
 export default App;
